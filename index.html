@@ -1,11 +1,54 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sample Website</title>
+    <title>Enhanced Website</title>
     <script src="./js/main.js" type="module"></script>
     <link rel="stylesheet" href="./css/main.css" />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      header {
+        background: #222;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+      main {
+        padding: 20px;
+        max-width: 900px;
+        margin: auto;
+      }
+      .slider {
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        height: 400px;
+        overflow: hidden;
+        margin: 40px auto;
+        border-radius: 12px;
+      }
+      .slides {
+        display: flex;
+        width: 300%;
+        height: 100%;
+        animation: slide 12s infinite;
+      }
+      .slides img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      @keyframes slide {
+        0% { transform: translateX(0%); }
+        33% { transform: translateX(-100%); }
+        66% { transform: translateX(-200%); }
+        100% { transform: translateX(0%); }
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -17,6 +60,16 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime odit vero ipsum dignissimos fuga dolorum eaque officia earum corrupti fugit aliquid cupiditate, laboriosam at explicabo,
         provident sunt eveniet ex consequuntur!
       </p>
+
+      <!-- Image Slider -->
+      <div class="slider">
+        <div class="slides">
+          <img src="https://picsum.photos/seed/slide1/1200/800" alt="Slide 1" />
+          <img src="https://picsum.photos/seed/slide2/1200/800" alt="Slide 2" />
+          <img src="https://picsum.photos/seed/slide3/1200/800" alt="Slide 3" />
+        </div>
+      </div>
+
     </main>
   </body>
 </html>
