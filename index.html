@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -92,9 +92,139 @@
         padding: 20px;
         margin-top: 40px;
       }
+          /* Sidebar */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 70px;
+        height: 100vh;
+        background: #111;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        transition: width 0.3s ease;
+        overflow: hidden;
+      }
+      .sidebar.open {
+        width: 220px;
+      }
+
+      .sidebar a {
+        width: 100%;
+        padding: 20px 0;
+        text-align: left;
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding-left: 20px;
+      }
+      .sidebar a span {
+        display: none;
+        white-space: nowrap;
+      }
+      .sidebar.open a span {
+        display: inline;
+      }
+      .sidebar i {
+        font-size: 24px;
+      }
+
+      /* Toggle Button */
+      .toggle-btn {
+        position: fixed;
+        top: 20px;
+        left: 80px;
+        background: #111;
+        color: #fff;
+        padding: 10px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: left 0.3s ease;
+        user-select: none;
+      }
+      .sidebar.open + .toggle-btn {
+        left: 230px;
+      }
+
+      /* Push content */
+      body {
+        margin-left: 70px;
+        transition: margin-left 0.3s ease;
+      }
+      body.nav-open {
+        margin-left: 220px;
+      }
+
+      footer {
+        background: #222;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+      }
+          /* Responsive Design */
+      @media (max-width: 768px) {
+        .sidebar {
+          width: 60px;
+        }
+        .sidebar.open {
+          width: 180px;
+        }
+        body {
+          margin-left: 60px;
+        }
+        body.nav-open {
+          margin-left: 180px;
+        }
+        .toggle-btn {
+          left: 70px;
+        }
+        .sidebar.open + .toggle-btn {
+          left: 190px;
+        }
+        .slider {
+          height: 250px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header h1 {
+          font-size: 20px;
+        }
+        main {
+          padding: 15px;
+        }
+        .toggle-btn {
+          padding: 8px 12px;
+        }
+        .sidebar a {
+          padding: 15px 0 15px 15px;
+        }
+        .slides img {
+          object-fit: cover;
+        }
+        footer {
+          padding: 15px;
+          font-size: 14px;
+        }
+      }
     </style>
   </head>
   <body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <a href="#"><i>🏠</i><span>Home</span></a>
+      <a href="#"><i>📄</i><span>Pages</span></a>
+      <a href="#"><i>📞</i><span>Contact</span></a>
+      <a href="#"><i>⚙️</i><span>Settings</span></a>
+    </div>
+
+    <!-- Toggle Button -->
+    <div class="toggle-btn" id="toggleBtn">☰</div>
     <!-- Sidebar -->
     <div class="sidebar">
       <a href="#"><i>🏠</i><span>Home</span></a>
@@ -126,5 +256,14 @@
     <footer>
       <p>© 2025 Your Website. All rights reserved.</p>
     </footer>
+      <script>
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = document.getElementById('toggleBtn');
+
+      toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+        document.body.classList.toggle('nav-open');
+      });
+    </script>
   </body>
 </html>
